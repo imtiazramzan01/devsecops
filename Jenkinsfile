@@ -20,11 +20,11 @@ pipeline {
             }
         }   
       stage('Docker Build and Push') {
-            node {
-              checkout scm
-              docker.withRegistry('https://hub.docker.com','DockerCred'){
+            steps {
+              script {
+                docker.withRegistry('https://hub.docker.com','DockerCred'){
                 def customImage = docker.build("my-image:${env.GIT_COMMIT}")
-                customImage.push()
+                customImage.push()}
               }
             }
         } 
