@@ -22,8 +22,8 @@ pipeline {
       stage('Docker Build and Push') {
             steps {
               sh 'printenv'
-              sh 'docker build -t imtiaz01/numeric-app:""$GET_COMMIT"" .'
-              sh 'docker push imtiaz01/numeric-app:""$GET_COMMIT""' 
+              sh 'docker build -t imtiaz01/numeric-app:""$GIT_COMMIT"" .'
+              sh 'docker push imtiaz01/numeric-app:""$GIT_COMMIT""' 
             }
         } 
     }
