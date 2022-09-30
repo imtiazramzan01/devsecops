@@ -22,8 +22,8 @@ pipeline {
       stage('Docker Build and Push') {
             steps {
               script {
-                docker.withRegistry('https://hub.docker.com','DockerCred'){
-                def customImage = docker.build("my-image:${env.GIT_COMMIT}")
+                docker.withRegistry('https://registry.hub.docker.com','DockerCred'){
+                def customImage = docker.build("imtiaz01/numeric-app:${env.GIT_COMMIT}")
                 customImage.push()}
               }
             }
