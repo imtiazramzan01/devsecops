@@ -21,6 +21,7 @@ pipeline {
         }   
       stage('Docker Build and Push') {
             steps {
+              checkout scm
               docker.withRegistry('https://hub.docker.com','DockerCred'){
                 def customImage = docker.build("my-image:${env.GIT_COMMIT}")
                 customImage.push()
